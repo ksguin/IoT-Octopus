@@ -15,14 +15,21 @@ The umbrella repository [Codename: ***'Octopus'***] of all the experiments/assig
 ## Installation
 1. Download [Arduino IDE](https://www.arduino.cc/en/Main/Software) and install using recommended settings.
 
-1. [Adafruit_Sensor](https://github.com/adafruit/Adafruit_Sensor.git) contains __necessary__ files to get your sketch up and running.
+1. Do remember to check the type of __COM Port__ present in your machine, under __Device Manager > Ports__.
+
+1. In Arduino IDE, under __Tools > Board__, select __NodeMCU x.x (ESP-12E Module)__.  [x.x denotes the version number, we are currently using __v1.0__]
+
+1. Under __Sketch > Include Library > Manage Libraries__, search and install the following:
+   - __DHT Sensor Library by Adafruit__ (use latest version, we're currently using __v1.3.4__), make sure DHT 11 is mentioned in the description.
+
+1. [Adafruit_Sensor](https://github.com/adafruit/Adafruit_Sensor.git) contains __*necessary*__ files to get your sketch up and running.
 Visit the link, clone, extract and copy-paste (with replacement) in the library where your Arduino packages reside.
    - If you installed [Arduino IDE](https://www.arduino.cc/en/Main/Software) in the default location,
    
      > (C:\Users\\{your_username}\Documents\Arduino)
      
      path should contain your library packages on a Windows machine.
-
+     
 
 ## Contributing
 Pull requests are welcome.
