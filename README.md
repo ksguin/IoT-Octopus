@@ -5,6 +5,8 @@ The umbrella repository [Codename: ***'Octopus'***] of all the experiments/assig
 * __Lolin NodeMCU ESP8266 CP2012 NodeMCU WiFi Serial Wireless Module__
 * __MB102 Breadboard__
 * __USB Data Cable__
+* __1kΩ Resistor__
+* __LED__
 * _16 Sensor Modules( [Quad Store](https://www.quadstore.in) 16 in 1 Sensor Kit ) Arduino Uno R3, Mega 2560_
   - __DHT 11 Temperature and Humidity Sensor__
 * __Jumper Wires__
