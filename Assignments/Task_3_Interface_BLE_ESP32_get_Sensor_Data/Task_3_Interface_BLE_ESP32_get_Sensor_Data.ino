@@ -9,6 +9,16 @@
 #include <BLEServer.h>
 #include "BluetoothSerial.h"
 
+//Using On-Board Maxim Integrated DS18B20 Temperature Sensor on ESP32 for measuring in-chip temperature
+#ifdef __cplusplus
+extern "C" {
+#endif
+uint8_t temprature_sens_read();
+#ifdef __cplusplus
+}
+#endif
+uint8_t temprature_sens_read();
+
 #define SERVICE_UUID "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
 #define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 
@@ -53,15 +63,18 @@ void setup() {
 }
 
 void loop() {
+  delay(2000);
   if (deviceConnected) {
-    float txValue = random(1, 9) / 3.14 ;
+    //float txValue = random(1, 9) / 3.14 ;
+    float txValue = (temprature_sens_read() - 32)*5 / 9;    //converting °F to °C
     char txString[8];
     dtostrf(txValue, 1, 2, txString); // float_val, min_width, digits_after_decimal, char_buffer
     pCharacteristic->setValue(txString);
     //writing to serial BT
     SerialBT.println(txString);
     Serial.print("Data Written: ");
-    Serial.println(txString);
+    Serial.print(txString);
+    Serial.println("°C");
   }
   delay(3000);
 }
