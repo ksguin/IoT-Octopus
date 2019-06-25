@@ -29,34 +29,19 @@ void setup() {
   Serial.begin(9600);// speed of ESP8266
   pinMode(LED_BUILTIN, OUTPUT);
 
-  //LED OFF when WiFi isn't connected
-  digitalWrite(LED_BUILTIN, HIGH);  //Built-in LED works opposite
-
-  WiFi.begin(ssid,password);
-  Serial.println();
-  Serial.print("WiFi connecting to ");
-  Serial.println(ssid);
-
-  //connecting dots
-  Serial.print("Connecting");
-  while( WiFi.status() != WL_CONNECTED ){
-      delay(500);
-      Serial.print(".");
-  }
-
-  //LED ON when WiFi connection established
-  digitalWrite(LED_BUILTIN, LOW);
-
-  Serial.println();
-  Serial.print("Connection Established! ");
-  Serial.print("NodeMCU IP Address : ");
-  Serial.println(WiFi.localIP());
-
+  WiFiconnect();  //connect to WiFi
   ThingSpeak.begin(client);  // Initialize ThingSpeak with client
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  //If client isn't connected, reconnect to WiFi
+  while(WiFi.status() != WL_CONNECTED){
+    Serial.println("Reconnecting...");
+    delay(1000);
+    WiFiconnect();
+  }
+  
   float temp_data = random(20,50);
   float humidity_data = random(20,90);
 
@@ -76,5 +61,30 @@ void loop() {
     Serial.println("Problem updating channel. HTTP error code " + String(status));
   }
   
-  delay(16000); // ThingSpeak will only accept updates atleast after every 15 seconds.
+  delay(16000); // ThingSpeak will only accept updates atleast after every 15 seconds, so 16 seconds for safety
+}
+
+void WiFiconnect() {
+  //LED OFF when WiFi isn't connected
+  digitalWrite(LED_BUILTIN, HIGH);  //Built-in LED works opposite
+
+  WiFi.begin(ssid,password);
+  Serial.println();
+  Serial.print("WiFi connecting to ");
+  Serial.println(ssid);
+
+  //connecting dots
+  Serial.print("Connecting");
+  while( WiFi.status() != WL_CONNECTED ){
+      delay(800);
+      Serial.print(".");
+  }
+
+  //LED ON when WiFi connection established
+  digitalWrite(LED_BUILTIN, LOW);
+
+  Serial.println();
+  Serial.print("Connection Established! ");
+  Serial.print("NodeMCU IP Address: ");
+  Serial.println(WiFi.localIP());
 }
