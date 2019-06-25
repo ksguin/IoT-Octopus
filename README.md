@@ -36,6 +36,7 @@ The umbrella repository [Codename: ***'Octopus'***] of all the experiments/assig
 
 1. Under __Sketch > Include Library > Manage Libraries__, search and install the following:
    - __DHT Sensor Library by Adafruit__ (use latest version, we're currently using __v1.3.4__), make sure DHT 11 is mentioned in the description.
+   - __ThingSpeak by MathWorks__ (use latest version, we're currently using __v1.5.0__), for using services of [ThingSpeak](https://thingspeak.com/).
 
 1. [Adafruit_Sensor](https://github.com/adafruit/Adafruit_Sensor.git) contains __*necessary*__ files to get your sketch up and running.
 Visit the link, clone, extract and copy-paste (with replacement) in the library where your Arduino packages reside.
