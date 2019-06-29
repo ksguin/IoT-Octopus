@@ -48,9 +48,7 @@ Visit the link, clone, extract and copy-paste (with replacement) in the library 
      
 
 ## Contributing
-Pull requests are welcome.
-
-__NOTE:__ Contributors with push access are requested to push into the respective file/folder.
+Thanks for your interest in contributing! There are many ways to contribute to this project. Get started here ([link](https://github.com/ksguin/IoT-Octopus/blob/master/CONTRIBUTING.md)).
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
